@@ -1,4 +1,4 @@
-Journey  .Net Core3 + ANugular 8.2 Project
+Journey  .Net Core3 + Angular 8.2 Project
 
 Setup Steps 
 
@@ -15,8 +15,11 @@ Step 2 ====>
 
    * Install IISExpress Is you dont haven't installed 
    * Download Link https://www.microsoft.com/en-us/download/details.aspx?id=48264
-   
-Step 3 ====>
+  
+Step 3 ====> 
+   * if you dont have installed angular latest version you have to update the angular version.
+
+Step 4 ====>
    * Clone the Project And Open it through the VS 2019 and run.
    
 
