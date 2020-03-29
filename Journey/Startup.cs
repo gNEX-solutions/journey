@@ -1,10 +1,14 @@
+using Journey.Models;
+using log4net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Journey
 {
@@ -20,12 +24,31 @@ namespace Journey
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+          
+
+            // <============Add Swagger for watch Apis (Kalpa 2020-03-28)===============>
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+            //<=========================================>
+
+            //<============configure DB conection (Kalpa 2020-03-29) ================>  
+            services.AddDbContext<JournyDbContext>(optionns =>
+            optionns.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            //<=========================================>
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +71,14 @@ namespace Journey
             {
                 app.UseSpaStaticFiles();
             }
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseRouting();
 
@@ -70,6 +101,8 @@ namespace Journey
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+           
+
         }
     }
 }
