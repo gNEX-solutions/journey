@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShortDescriptionComponent } from './short-description/short-description.component';
 import { DestinationComponent } from './destination/destination.component';
 import { SharedModule } from '../shared/shared.module';
+import { MatGridListModule } from '@angular/material';
 
 
 
@@ -10,7 +11,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [ShortDescriptionComponent, DestinationComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatGridListModule
   ],
   exports: [ShortDescriptionComponent]
 })
