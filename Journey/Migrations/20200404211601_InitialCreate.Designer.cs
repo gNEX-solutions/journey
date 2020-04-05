@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Journey.Migrations
 {
     [DbContext(typeof(JournyDbContext))]
-    [Migration("20200329111224_InitialCreate")]
+    [Migration("20200404211601_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,32 +20,25 @@ namespace Journey.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Journey.Models.PaymentDetail", b =>
+            modelBuilder.Entity("Journey.Models.User", b =>
                 {
-                    b.Property<int>("PMId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CVV")
-                        .IsRequired()
-                        .HasColumnType("varchar(3)");
+                    b.Property<string>("Password")
+                        .HasColumnType("varchar(MAX)");
 
-                    b.Property<string>("CardNumber")
-                        .IsRequired()
-                        .HasColumnType("varchar(16)");
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("varchar(MAX)");
 
-                    b.Property<string>("CardOwnerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<string>("Username")
+                        .HasColumnType("varchar(MAX)");
 
-                    b.Property<string>("ExpirationDate")
-                        .IsRequired()
-                        .HasColumnType("varchar(5)");
+                    b.HasKey("Id");
 
-                    b.HasKey("PMId");
-
-                    b.ToTable("PaymentDetails");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

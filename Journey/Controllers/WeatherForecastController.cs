@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -9,6 +10,7 @@ namespace Journey.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+   
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -21,12 +23,15 @@ namespace Journey.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+
+            _logger.LogDebug(1, "NLog injected into HomeController");
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             _logger.LogInformation("ssss");
+            _logger.LogDebug(1, "NLog injected into HomeController");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -37,5 +42,7 @@ namespace Journey.Controllers
             })
             .ToArray();
         }
+
+       
     }
 }

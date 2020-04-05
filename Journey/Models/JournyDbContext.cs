@@ -10,7 +10,8 @@ namespace Journey.Models
     {
         public JournyDbContext(DbContextOptions<JournyDbContext> options) : base(options)
         { }
-        public DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public DbSet<User> Users { get; set; }
+
     }
 }
 

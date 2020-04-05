@@ -7,26 +7,25 @@ namespace Journey.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "PaymentDetails",
+                name: "Users",
                 columns: table => new
                 {
-                    PMId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CardOwnerName = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    CardNumber = table.Column<string>(type: "varchar(16)", nullable: false),
-                    ExpirationDate = table.Column<string>(type: "varchar(5)", nullable: false),
-                    CVV = table.Column<string>(type: "varchar(3)", nullable: false)
+                    Username = table.Column<string>(type: "varchar(MAX)", nullable: true),
+                    Password = table.Column<string>(type: "varchar(MAX)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "varchar(MAX)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaymentDetails", x => x.PMId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PaymentDetails");
+                name: "Users");
         }
     }
 }
