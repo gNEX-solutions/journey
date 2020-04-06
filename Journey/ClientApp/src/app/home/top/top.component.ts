@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TopDestinationCards } from 'src/app/model/homeTop.model';
 
 @Component({
   selector: 'app-top',
@@ -9,7 +10,9 @@ export class TopComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
+
   }
 
 }
