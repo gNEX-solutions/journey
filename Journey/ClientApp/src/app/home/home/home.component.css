@@ -1,0 +1,9 @@
+html,body{
+    height: 100% !important; 
+    background-image: url(../../../assets/exHome.png);
+    background-size: cover !important;
+    background-attachment: fixed;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+}
