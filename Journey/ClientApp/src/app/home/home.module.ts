@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { TopComponent } from './top/top.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatGridListModule } from '@angular/material';
+import { MatGridListModule, MatDividerModule, MatCardModule } from '@angular/material';
 
 
 
@@ -12,7 +12,9 @@ import { MatGridListModule } from '@angular/material';
   imports: [
     CommonModule,
     SharedModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDividerModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

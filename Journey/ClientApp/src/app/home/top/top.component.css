@@ -1,0 +1,17 @@
+body {
+    background-color: transparent;
+}
+
+mat-card {
+    margin: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  height: 100%;
+  width: 100%;
+}
+
+mat-grid-list {
+    height: 100%;
+    width: 100%;
+}
+
