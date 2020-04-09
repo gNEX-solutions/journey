@@ -4,7 +4,7 @@ namespace Journey.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DestinationAttributesType
+    public  class DestinationAttributesType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DestinationAttributesType()
