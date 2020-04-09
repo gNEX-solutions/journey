@@ -10,10 +10,10 @@ namespace Journey.Models
     public  class FollwedBy
     {
 
-        [Key, Column(Order = 0)] 
+       
         public int UserId { get; set; }
 
-        [Key, Column(Order = 1)] 
+       
         public int FollowedByUserId { get; set; }
     
         public virtual User User { get; set; }

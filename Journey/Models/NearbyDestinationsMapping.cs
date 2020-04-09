@@ -9,10 +9,10 @@ namespace Journey.Models
 
     public  class NearbyDestinationsMapping
     {
-        [Key , Column(Order = 0)]
+       
         public int DestinationId { get; set; }
 
-        [Key, Column(Order = 0)]
+      
         public int NearbyDestinationId { get; set; }
     
         public virtual Destination Destination { get; set; }

@@ -12,6 +12,6 @@ namespace Journey.Models
         public int DestinationId { get; set; }
     
         public virtual Destination Destination { get; set; }
-        public virtual DesttinationAttributesType DesttinationAttributesType { get; set; }
+        public virtual DestinationAttributesType DesttinationAttributesType { get; set; }
     }
 }

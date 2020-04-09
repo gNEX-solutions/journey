@@ -7,7 +7,7 @@ namespace Journey.Models
     
     public class UserFeedback
     {
-        public int FeedBackID { get; set; }
+        public int UserFeedbackId { get; set; }
         public byte Rating { get; set; }
         public string Comment { get; set; }
         public Nullable<int> DestinationID { get; set; }
