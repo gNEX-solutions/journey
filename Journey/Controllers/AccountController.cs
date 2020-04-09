@@ -55,28 +55,29 @@ namespace Journey.Controllers
            
         }
 
-        //[HttpPost("api/login")]
-        //public async Task<IActionResult> Login([FromBody]User userDto)
-        //{
-        //    var user = _journyDb.Users.SingleOrDefault(u => u.Username == userDto.Username);
-        //    if (user == null || !_passwordHasher.VerifyIdentityV3Hash(userDto.Password, user.Password)) return BadRequest();
-            
-        //    var usersClaims = new [] 
-        //    {
-        //        new Claim(ClaimTypes.Name, user.Username),                
-        //        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-        //    };
+        [HttpPost("api/login")]
+        public async Task<IActionResult> Login([FromBody]User userDto)
+        {
+            var user = _journyDb.Users.SingleOrDefault(u => u.Username == userDto.Username);
+            if (user == null || !_passwordHasher.VerifyIdentityV3Hash(userDto.Password, user.Password)) return BadRequest();
 
-        //    var jwtToken = _tokenService.GenerateAccessToken(usersClaims);
-        //    var refreshToken = _tokenService.GenerateRefreshToken();
+            var usersClaims = new[]
+            {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+            };
 
-        //    user.RefreshToken = refreshToken;
-        //    await _journyDb.SaveChangesAsync();
+            var jwtToken = _tokenService.GenerateAccessToken(usersClaims);
+            var refreshToken = _tokenService.GenerateRefreshToken();
 
-        //    return new ObjectResult(new {
-        //        token = jwtToken,
-        //        refreshToken = refreshToken
-        //    });            
-        //}
+            user.RefreshToken = refreshToken;
+            await _journyDb.SaveChangesAsync();
+
+            return new ObjectResult(new
+            {
+                token = jwtToken,
+                refreshToken = refreshToken
+            });
+        }
     }
 }

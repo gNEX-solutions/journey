@@ -23,13 +23,21 @@ namespace Journey.Models
         }
 
         public int UserId { get; set; }
+
+
         public string Email { get; set; }
         public string Name { get; set; }
-        public Nullable<System.TimeSpan> Birthdate { get; set; }
+       // public Nullable<System.TimeSpan> Birthdate { get; set; }
+       public DateTime BirthDate { get; set; }
         public string ProfilePictureUrl { get; set; }
-        public byte[] Username { get; set; }
+
+        [Column(TypeName = "varchar(MAX)")]
+        public string Username { get; set; }
+        [Column(TypeName = "varchar(MAX)")]
         public string Password { get; set; }
         public byte IsDeleted { get; set; }
+        [Column(TypeName = "varchar(MAX)")]
+        public string RefreshToken { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> ModifiedAt { get; set; }
 

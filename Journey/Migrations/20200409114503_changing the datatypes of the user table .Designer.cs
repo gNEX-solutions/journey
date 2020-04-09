@@ -4,14 +4,16 @@ using Journey.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Journey.Migrations
 {
     [DbContext(typeof(JournyDbContext))]
-    partial class JournyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200409114503_changing the datatypes of the user table ")]
+    partial class changingthedatatypesoftheusertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -434,16 +436,16 @@ namespace Journey.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("varchar(MAX)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePictureUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RefreshToken")
-                        .HasColumnType("varchar(MAX)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .HasColumnType("varchar(MAX)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
