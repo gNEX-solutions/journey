@@ -22,7 +22,7 @@ namespace Journey.Models
             this.WishLIsts = new HashSet<WishLIst>();
         }
 
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
 
         public string Email { get; set; }
@@ -31,13 +31,17 @@ namespace Journey.Models
        public DateTime BirthDate { get; set; }
         public string ProfilePictureUrl { get; set; }
 
-        [Column(TypeName = "varchar(MAX)")]
+        //[Column(TypeName = "varchar(MAX)")]
         public string Username { get; set; }
-        [Column(TypeName = "varchar(MAX)")]
+
+        //[Column(TypeName = "varchar(MAX)")]
         public string Password { get; set; }
+
         public byte IsDeleted { get; set; }
-        [Column(TypeName = "varchar(MAX)")]
+
+       // [Column(TypeName = "varchar(MAX)")]
         public string RefreshToken { get; set; }
+
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> ModifiedAt { get; set; }
 
