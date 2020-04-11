@@ -337,3 +337,5 @@
 2020-04-05 12:12:17.2467 Info Adding target FileTarget(Name=allfile)
 2020-04-05 12:12:17.2884 Info Adding target FileTarget(Name=ownFile-web)
 2020-04-05 12:12:17.3554 Info Found 45 configuration items
+2020-04-05 12:25:55.6197 Info AppDomain Shutting down. Logger closing...
+2020-04-05 12:25:55.6433 Info Logger has been shut down.
