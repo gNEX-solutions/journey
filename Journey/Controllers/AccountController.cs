@@ -64,7 +64,7 @@ namespace Journey.Controllers
             var usersClaims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.userId.ToString())
             };
 
             var jwtToken = _tokenService.GenerateAccessToken(usersClaims);

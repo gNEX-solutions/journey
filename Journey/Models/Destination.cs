@@ -30,8 +30,12 @@ namespace Journey.Models
         public Nullable<byte> IsPublished { get; set; }
         public Nullable<int> CatagoryId { get; set; }
         public string CreatedUserId { get; set; }
+
+        public User user { get; set; }
         public Nullable<int> TravellingModeId { get; set; }
-        public Nullable<int> PuBlisherId { get; set; }
+        public Nullable<int> AdminId { get; set; }
+
+        public Admin Admin { get; set; }
         public byte IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

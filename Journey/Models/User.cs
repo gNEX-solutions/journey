@@ -22,7 +22,7 @@ namespace Journey.Models
             this.WishLIsts = new HashSet<WishLIst>();
         }
 
-        public int Id { get; set; }
+        public int userId { get; set; }
 
 
         public string Email { get; set; }
