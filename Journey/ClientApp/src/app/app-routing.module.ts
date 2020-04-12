@@ -7,7 +7,7 @@ import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes =[
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/destination', pathMatch: 'full'},
   {path: 'destination', component: DestinationComponent},
   {path: 'home', component: HomeComponent}
 ]
