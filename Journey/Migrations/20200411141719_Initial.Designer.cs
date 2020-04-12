@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Journey.Migrations
 {
     [DbContext(typeof(JournyDbContext))]
-    [Migration("20200409124918_attempt 2")]
-    partial class attempt2
+    [Migration("20200411141719_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
