@@ -51,5 +51,7 @@ namespace Journey.Models
         public virtual ICollection<UserFeedback> UserFeedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WishLIst> WishLIsts { get; set; }
+
+        public virtual ICollection<Destination> CreatedDestinations { get; set; }
     }
 }
