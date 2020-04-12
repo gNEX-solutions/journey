@@ -8,3 +8,14 @@ html,body{
     margin: 0;
 }
 
+nz-header{
+    background-color: transparent;
+}
+
+nz-layout {
+    background-color: transparent;
+}
+
+nz-footer {
+    background-color: transparent;
+}

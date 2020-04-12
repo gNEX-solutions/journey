@@ -3,16 +3,14 @@
 
     </head>
     <body>
-        <mat-grid-list cols="10">
-            <mat-grid-tile colspan="1"></mat-grid-tile>
-            <mat-grid-tile colspan="8" >
-               
+        <nz-layout>
+            <nz-header>
                 <app-nav-bar></app-nav-bar>
-              
-            </mat-grid-tile>
-            <mat-grid-tile colspan="1"></mat-grid-tile>
-        </mat-grid-list>
-            <app-top></app-top>
-       
+            </nz-header>
+            <nz-content>
+               <app-top></app-top>
+            </nz-content>
+            <nz-footer></nz-footer>
+          </nz-layout>
     </body>
 </html>

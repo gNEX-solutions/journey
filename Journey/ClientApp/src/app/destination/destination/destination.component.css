@@ -7,3 +7,15 @@ html,body{
     height: auto;
     margin: 0;
 }
+
+nz-header{
+    background-color: transparent;
+}
+
+nz-layout {
+    background-color: transparent;
+}
+
+nz-footer {
+    background-color: transparent;
+}
