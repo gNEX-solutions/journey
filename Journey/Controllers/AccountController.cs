@@ -60,11 +60,11 @@ namespace Journey.Controllers
         {
             var user = _journyDb.Users.SingleOrDefault(u => u.Username == userDto.Username);
             if (user == null || !_passwordHasher.VerifyIdentityV3Hash(userDto.Password, user.Password)) return BadRequest();
-            
-            var usersClaims = new [] 
+
+            var usersClaims = new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),                
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.userId.ToString())
             };
 
             var jwtToken = _tokenService.GenerateAccessToken(usersClaims);
@@ -73,10 +73,11 @@ namespace Journey.Controllers
             user.RefreshToken = refreshToken;
             await _journyDb.SaveChangesAsync();
 
-            return new ObjectResult(new {
+            return new ObjectResult(new
+            {
                 token = jwtToken,
                 refreshToken = refreshToken
-            });            
+            });
         }
     }
 }
