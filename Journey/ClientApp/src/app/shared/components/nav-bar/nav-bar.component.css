@@ -1,32 +1,22 @@
-mat-toolbar {
-  justify-content: center;
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: transparent;
-    color: white;
-  }
-  
-  mat-toolbar > span   {
-    background-color: transparent;
-    height: auto;
-    width: auto;
-    margin: 20px;
-    text-align: center;
-  }
 
- button {
+ .btns {
     background-color: transparent;
     border: none;
     color: white;
   }
 
-  mat-card {
+  nz-select {
+    width: 100%;
     background-color: transparent;
-    border: 1px solid white;
     color: white;
   }
+
+  div {
+    color: white;
+  }
+
+ 
+
 
 
 
