@@ -3,86 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Journey.Migrations
 {
-    public partial class addingthetablestothedatabaseaspersqlv11 : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Users",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Id",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "RefreshToken",
-                table: "Users");
-
-            migrationBuilder.AlterColumn<byte[]>(
-                name: "Username",
-                table: "Users",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "varchar(MAX)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Users",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "varchar(MAX)",
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "UserId",
-                table: "Users",
-                nullable: false,
-                defaultValue: 0)
-                .Annotation("SqlServer:Identity", "1, 1");
-
-            migrationBuilder.AddColumn<TimeSpan>(
-                name: "Birthdate",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<byte>(
-                name: "IsDeleted",
-                table: "Users",
-                nullable: false,
-                defaultValue: (byte)0);
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "ModifiedAt",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "ProfilePictureUrl",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Users",
-                table: "Users",
-                column: "UserId");
-
             migrationBuilder.CreateTable(
                 name: "Admins",
                 columns: table => new
@@ -140,24 +64,6 @@ namespace Journey.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FollwedBies",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false),
-                    FollowedByUserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FollwedBies", x => new { x.UserId, x.FollowedByUserId });
-                    table.ForeignKey(
-                        name: "FK_FollwedBies_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PopularityTypes",
                 columns: table => new
                 {
@@ -168,6 +74,28 @@ namespace Journey.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PopularityTypes", x => x.PopularityTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false),
+                    ProfilePictureUrl = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<byte>(nullable: false),
+                    RefreshToken = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    ModifiedAt = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -208,15 +136,33 @@ namespace Journey.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FollwedBies",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false),
+                    FollowedByUserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FollwedBies", x => new { x.UserId, x.FollowedByUserId });
+                    table.ForeignKey(
+                        name: "FK_FollwedBies_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Activities",
                 columns: table => new
                 {
                     ActivityId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     ActivityImageUrl = table.Column<string>(nullable: true),
                     DestinationId = table.Column<int>(nullable: false),
-                    IsDeleted = table.Column<byte>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     ModifiedAt = table.Column<DateTime>(nullable: true)
                 },
@@ -426,7 +372,7 @@ namespace Journey.Migrations
                         name: "FK_UserFeedbacks_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -455,7 +401,7 @@ namespace Journey.Migrations
                         name: "FK_WishLIsts_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -614,6 +560,9 @@ namespace Journey.Migrations
                 name: "Admins");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "Destinations");
 
             migrationBuilder.DropTable(
@@ -621,77 +570,6 @@ namespace Journey.Migrations
 
             migrationBuilder.DropTable(
                 name: "DestinationTravellingModes");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Users",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Birthdate",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "CreatedAt",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Email",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "IsDeleted",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "ModifiedAt",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Name",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "ProfilePictureUrl",
-                table: "Users");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Username",
-                table: "Users",
-                type: "varchar(MAX)",
-                nullable: true,
-                oldClrType: typeof(byte[]),
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Users",
-                type: "varchar(MAX)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Id",
-                table: "Users",
-                type: "int",
-                nullable: false,
-                defaultValue: 0)
-                .Annotation("SqlServer:Identity", "1, 1");
-
-            migrationBuilder.AddColumn<string>(
-                name: "RefreshToken",
-                table: "Users",
-                type: "varchar(MAX)",
-                nullable: true);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Users",
-                table: "Users",
-                column: "Id");
         }
     }
 }
