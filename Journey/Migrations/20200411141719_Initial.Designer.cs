@@ -4,14 +4,16 @@ using Journey.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Journey.Migrations
 {
     [DbContext(typeof(JournyDbContext))]
-    partial class JournyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200411141719_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,9 +148,6 @@ namespace Journey.Migrations
                     b.Property<string>("AdditonalInformation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("AdminId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CatagoryId")
                         .HasColumnType("int");
 
@@ -173,6 +172,9 @@ namespace Journey.Migrations
                     b.Property<byte?>("IsPublished")
                         .HasColumnType("tinyint");
 
+                    b.Property<int?>("PuBlisherId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -182,18 +184,11 @@ namespace Journey.Migrations
                     b.Property<DateTime?>("VisitedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("userId")
-                        .HasColumnType("int");
-
                     b.HasKey("DestinationId");
-
-                    b.HasIndex("AdminId");
 
                     b.HasIndex("DestinationCatogaryId");
 
                     b.HasIndex("DestinationTravellingModeId");
-
-                    b.HasIndex("userId");
 
                     b.ToTable("Destinations");
                 });
@@ -417,7 +412,7 @@ namespace Journey.Migrations
 
             modelBuilder.Entity("Journey.Models.User", b =>
                 {
-                    b.Property<int>("userId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -452,7 +447,7 @@ namespace Journey.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("userId");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -550,10 +545,6 @@ namespace Journey.Migrations
 
             modelBuilder.Entity("Journey.Models.Destination", b =>
                 {
-                    b.HasOne("Journey.Models.Admin", "Admin")
-                        .WithMany("PublishedDestinations")
-                        .HasForeignKey("AdminId");
-
                     b.HasOne("Journey.Models.DestinationCatogary", "DestinationCatogary")
                         .WithMany("Destinations")
                         .HasForeignKey("DestinationCatogaryId");
@@ -561,10 +552,6 @@ namespace Journey.Migrations
                     b.HasOne("Journey.Models.DestinationTravellingMode", "DestinationTravellingMode")
                         .WithMany("Destinations")
                         .HasForeignKey("DestinationTravellingModeId");
-
-                    b.HasOne("Journey.Models.User", "user")
-                        .WithMany("CreatedDestinations")
-                        .HasForeignKey("userId");
                 });
 
             modelBuilder.Entity("Journey.Models.DestinationAttribute", b =>
