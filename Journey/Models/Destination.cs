@@ -28,11 +28,8 @@ namespace Journey.Models
         public string AdditonalInformation { get; set; }
         public Nullable<System.DateTime> VisitedOn { get; set; }
         public Nullable<byte> IsPublished { get; set; }
-        public Nullable<int> CatagoryId { get; set; }
-        public string CreatedUserId { get; set; }
 
         public User user { get; set; }
-        public Nullable<int> TravellingModeId { get; set; }
         public Nullable<int> AdminId { get; set; }
 
         public Admin Admin { get; set; }

@@ -149,9 +149,6 @@ namespace Journey.Migrations
                     b.Property<int?>("AdminId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CatagoryId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DestinationCatogaryId")
                         .HasColumnType("int");
 
@@ -173,13 +170,10 @@ namespace Journey.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TravellingModeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("VisitedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("DestinationId");
@@ -561,9 +555,7 @@ namespace Journey.Migrations
 
                     b.HasOne("Journey.Models.User", "user")
                         .WithMany("CreatedDestinations")
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("userId");
                 });
 
             modelBuilder.Entity("Journey.Models.DestinationAttribute", b =>

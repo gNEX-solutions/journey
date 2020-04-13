@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Journey.Migrations
 {
     [DbContext(typeof(JournyDbContext))]
-    [Migration("20200411141719_Initial")]
-    partial class Initial
+    [Migration("20200413200124_Update Destinations")]
+    partial class UpdateDestinations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -148,11 +148,8 @@ namespace Journey.Migrations
                     b.Property<string>("AdditonalInformation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CatagoryId")
+                    b.Property<int?>("AdminId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CreatedUserId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DestinationCatogaryId")
                         .HasColumnType("int");
@@ -163,8 +160,8 @@ namespace Journey.Migrations
                     b.Property<int?>("DestinationTravellingModeId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("EnjoyableTime")
-                        .HasColumnType("time");
+                    b.Property<DateTime?>("EnjoyableTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<byte>("IsDeleted")
                         .HasColumnType("tinyint");
@@ -172,23 +169,24 @@ namespace Journey.Migrations
                     b.Property<byte?>("IsPublished")
                         .HasColumnType("tinyint");
 
-                    b.Property<int?>("PuBlisherId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TravellingModeId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("VisitedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("userId")
+                        .HasColumnType("int");
+
                     b.HasKey("DestinationId");
+
+                    b.HasIndex("AdminId");
 
                     b.HasIndex("DestinationCatogaryId");
 
                     b.HasIndex("DestinationTravellingModeId");
+
+                    b.HasIndex("userId");
 
                     b.ToTable("Destinations");
                 });
@@ -412,7 +410,7 @@ namespace Journey.Migrations
 
             modelBuilder.Entity("Journey.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("userId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -447,7 +445,7 @@ namespace Journey.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("userId");
 
                     b.ToTable("Users");
                 });
@@ -545,6 +543,10 @@ namespace Journey.Migrations
 
             modelBuilder.Entity("Journey.Models.Destination", b =>
                 {
+                    b.HasOne("Journey.Models.Admin", "Admin")
+                        .WithMany("PublishedDestinations")
+                        .HasForeignKey("AdminId");
+
                     b.HasOne("Journey.Models.DestinationCatogary", "DestinationCatogary")
                         .WithMany("Destinations")
                         .HasForeignKey("DestinationCatogaryId");
@@ -552,6 +554,10 @@ namespace Journey.Migrations
                     b.HasOne("Journey.Models.DestinationTravellingMode", "DestinationTravellingMode")
                         .WithMany("Destinations")
                         .HasForeignKey("DestinationTravellingModeId");
+
+                    b.HasOne("Journey.Models.User", "user")
+                        .WithMany("CreatedDestinations")
+                        .HasForeignKey("userId");
                 });
 
             modelBuilder.Entity("Journey.Models.DestinationAttribute", b =>
