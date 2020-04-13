@@ -2,9 +2,13 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Journey",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:51853/",
-      "sslPort": 44333
+      "applicationUrl": "http://localhost:52733"
+     
     }
   },
   "profiles": {
@@ -15,8 +19,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApi": {
-      "commandName": "Project",
+    "Journey": {
+      "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
