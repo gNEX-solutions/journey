@@ -44,6 +44,7 @@ namespace Journey.Controllers
                                d.IsPublished,
                                d.CatagoryId,
                                d.CreatedUserId,
+                               d.user.Username,
                                d.TravellingModeId,
                                d.AdminId,
                                DestinationImages =d.DestinationImages.Select(i => new { i.DestinationImageId, i.ImageCaption, i.Url, i.DestinationId }),
