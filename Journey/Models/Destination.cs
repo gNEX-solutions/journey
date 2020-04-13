@@ -24,7 +24,7 @@ namespace Journey.Models
         public int DestinationId { get; set; }
         public string DestinationName { get; set; }
         public string ShortDescription { get; set; }
-        public Nullable<System.TimeSpan> EnjoyableTime { get; set; }
+        public Nullable<System.DateTime> EnjoyableTime { get; set; }
         public string AdditonalInformation { get; set; }
         public Nullable<System.DateTime> VisitedOn { get; set; }
         public Nullable<byte> IsPublished { get; set; }
