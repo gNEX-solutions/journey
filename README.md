@@ -22,4 +22,12 @@ Step 3 ====>
 Step 4 ====>
    * Clone the Project And Open it through the VS 2019 and run.
    
+   
+   
+#Run project
+
+* You can run project By Visul studio Run; But cant acces in postman;
+* If you want to acces it through Postman goto the project folder and Executhe the command 'dotnet run'
+* Then you can access the Web APis througth the http://localhost:4000/
+   
 
