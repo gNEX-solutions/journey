@@ -1,0 +1,13 @@
+body {
+    background-color: transparent;
+}
+
+mat-card {
+    background-color: transparent;
+    color: white;
+}
+
+mat-card-content {
+    font-size: xx-large;
+    
+}

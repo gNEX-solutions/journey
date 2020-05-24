@@ -1,0 +1,21 @@
+html,body{
+    height: 100% !important; 
+    background-image: url(../../../assets/exDestination.png);
+    background-size: cover !important;
+    background-attachment: fixed;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+}
+
+nz-header{
+    background-color: transparent;
+}
+
+nz-layout {
+    background-color: transparent;
+}
+
+nz-footer {
+    background-color: transparent;
+}

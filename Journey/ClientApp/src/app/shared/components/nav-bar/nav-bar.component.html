@@ -1,0 +1,48 @@
+
+  
+    <div nz-row nz-row nzType="flex" nzJustify="space-around" nzAlign="middle">
+        <div nz-col nzSpan="1.5"></div>
+        <div nz-col nzSpan="7">
+            <div nz-row>
+                <div nz-col nzSpan="7">
+                    <span><img src="../../../../assets/journey_icon.png"></span>
+                </div>
+                <div nz-col nzSpan="7">
+                    <span>journey</span>
+                </div>
+                <div nz-col nzSpan="10">
+                    <span>
+                        <nz-select nzAllowClear nzPlaceHolder="Explore By City">
+                            <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+                            <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                          </nz-select>
+                    </span>
+                </div>
+              </div>
+          
+            
+           
+        </div>
+        <div nz-col nzSpan="7"> 
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input type="text" nz-input placeholder="input search text" />
+              </nz-input-group>
+              <ng-template #suffixIconButton>
+                <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+              </ng-template>
+        </div>
+        <div nz-col nzSpan="7">
+            <div nz-row>
+                <div nz-col nzSpan="8">
+                    <button nz-button nzGhost class="btns">Help</button>
+                </div>
+                <div nz-col nzSpan="8">
+                    <button nz-button nzGhost class="btns">SignUp</button>
+                </div>
+                <div nz-col nzSpan="8">
+                    <button nz-button nzGhost class="btns">Login</button>
+                </div>
+              </div>
+        </div>
+        <div nz-col nzSpan="1.5"></div>
+    </div>   
